@@ -1,0 +1,120 @@
+{% extends "base.html" %} {% block title %} Cities | ADMIN - CBS {% endblock %}
+{% block body %}
+<!-- Add City Form -->
+<div class="container px-5 my-5">
+	<form
+		id="add-city-form"
+		method="post"
+		action="{{ url_for('add_or_view_city') }}"
+	>
+		<div class="d-grid">
+			<label class="form-label" for="countryName_1"
+				>Select Country Name</label
+			>
+			<select
+				class="btn btn-warning btn-lg"
+				name="country-name-1"
+				id="countryName_1"
+			>
+				{% for country in countries %}
+				<option value="{{country.country_id}}">
+					{{country.country_name}}
+				</option>
+				{% endfor %}
+			</select>
+			<label class="form-label" for="stateName_1"
+				>Select State Name</label
+			>
+			<select
+				class="btn btn-warning btn-lg"
+				name="state-name-1"
+				id="stateName_1"
+			>
+				{% for state in states %}
+				<option value="{{state.state_id}}">{{state.state_name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<p></p>
+		<div class="mb-3">
+			<label class="form-label" for="cityName">City Name</label>
+			<input
+				class="form-control"
+				id="cityName"
+				name="city-name"
+				type="text"
+				placeholder="Enter City Name"
+				required
+			/>
+		</div>
+		<div class="d-grid">
+			<button class="btn btn-success" id="submitButton" type="submit">
+				Add City
+			</button>
+		</div>
+	</form>
+</div>
+<!-- Add City Form -->
+<hr />
+<div class="container px-5 my-5">
+	<!-- View City Form -->
+	<form
+		id="view-city-form"
+		method="post"
+		action="{{ url_for('add_or_view_city') }}"
+	>
+		<div class="d-grid">
+			<label class="form-label" for="countryName"
+				>Select Country Name</label
+			>
+			<select
+				class="btn btn-warning btn-lg"
+				name="country-name-2"
+				id="countryName"
+			>
+				{% for country in countries %}
+				<option value="{{country.country_id}}">
+					{{country.country_name}}
+				</option>
+				{% endfor %}
+			</select>
+			<label class="form-label" for="stateName">Select State Name</label>
+			<select
+				class="btn btn-warning btn-lg"
+				name="state-name-2"
+				id="stateName"
+			>
+				{% for state in states %}
+				<option value="{{state.state_id}}">{{state.state_name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<p></p>
+		<div class="d-grid">
+			<button class="btn btn-success" id="submitButton" type="submit">
+				View Cities
+			</button>
+		</div>
+	</form>
+	<hr />
+	<!-- View State Form -->
+	<table class="table table-striped table-hover table-bordered">
+		<thead class="table-dark">
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">City Name</th>
+			</tr>
+		</thead>
+		{% if states %}
+		<tbody>
+			{% for city in cities %}
+			<tr>
+				<td>{{city.city_id}}</td>
+				<td>{{city.city_name}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+		{% endif %}
+	</table>
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "base.html" %} {% block title %} States | ADMIN - CBS {% endblock %}
+{% block body %}
+<!-- Add State Form -->
+<div class="container px-5 my-5">
+	<form
+		id="add-state-form"
+		method="post"
+		action="{{ url_for('add_or_view_state') }}"
+	>
+		<div class="d-grid">
+			<label class="form-label" for="countryName"
+				>Select Country Name</label
+			>
+			<select
+				class="btn btn-warning btn-lg"
+				name="country-name-1"
+				id="countryName"
+			>
+				{% for country in countries %}
+				<option value="{{country.country_id}}">
+					{{country.country_name}}
+				</option>
+				{% endfor %}
+			</select>
+		</div>
+		<p></p>
+		<div class="mb-3">
+			<label class="form-label" for="stateName">State Name</label>
+			<input
+				class="form-control"
+				id="stateName"
+				name="state-name"
+				type="text"
+				placeholder="Enter State Name"
+				required
+			/>
+		</div>
+		<div class="d-grid">
+			<button class="btn btn-success" id="submitButton" type="submit">
+				Add State
+			</button>
+		</div>
+	</form>
+</div>
+<!-- Add State Form -->
+<hr />
+<div class="container px-5 my-5">
+	<!-- View State Form -->
+	<form
+		id="view-state-form"
+		method="post"
+		action="{{ url_for('add_or_view_state') }}"
+	>
+		<div class="d-grid">
+			<label class="form-label" for="countryName"
+				>Select Country Name</label
+			>
+			<select
+				class="btn btn-warning btn-lg"
+				name="country-name-2"
+				id="countryName"
+			>
+				{% for country in countries %}
+				<option value="{{country.country_id}}">
+					{{country.country_name}}
+				</option>
+				{% endfor %}
+			</select>
+		</div>
+		<p></p>
+		<div class="d-grid">
+			<button class="btn btn-success" id="submitButton" type="submit">
+				View States
+			</button>
+		</div>
+	</form>
+	<hr />
+	<!-- View State Form -->
+	<table class="table table-striped table-hover table-bordered">
+		<thead class="table-dark">
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">State Name</th>
+			</tr>
+		</thead>
+		{% if states %}
+		<tbody>
+			{% for state in states %}
+			<tr>
+				<td>{{state.state_id}}</td>
+				<td>{{state.state_name}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+		{% endif %}
+	</table>
+</div>
+{% endblock %}

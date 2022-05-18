@@ -1,0 +1,92 @@
+{% extends "base.html" %} {% block title %} Home | CBS {% endblock %} {% block
+body %}
+<div class="vh-100 d-flex justify-content-center align-items-center">
+	<div><h1>Hello {{current_user.user_first_name}}!</h1></div>
+	&nbsp;&nbsp;&nbsp;
+	<div>
+		<button
+			class="btn btn-success"
+			type="button"
+			data-bs-toggle="offcanvas"
+			data-bs-target="#staticBackdrop"
+			aria-controls="staticBackdrop"
+		>
+			Start Here
+		</button>
+	</div>
+</div>
+<div
+	class="offcanvas offcanvas-start"
+	data-bs-backdrop="static"
+	tabindex="-1"
+	id="staticBackdrop"
+	aria-labelledby="staticBackdropLabel"
+>
+	<div class="offcanvas-header">
+		<button
+			type="button"
+			class="btn-close"
+			data-bs-dismiss="offcanvas"
+			aria-label="Close"
+		></button>
+	</div>
+	<div class="offcanvas-body">
+		{% if current_user["user_role"] == "ADMIN" %}
+		<p>Country</p>
+		<a href="{{ url_for('add_or_view_country') }}"
+			><button class="btn btn-success">Add Country</button></a
+		>
+		<a href="{{ url_for('add_or_view_country') }}"
+			><button class="btn btn-warning">View Country</button></a
+		>
+		<hr />
+		<p>State</p>
+		<a href="{{ url_for('add_or_view_state') }}"
+			><button class="btn btn-success">Add State</button></a
+		>
+		<a href="{{ url_for('add_or_view_state') }}"
+			><button class="btn btn-warning">View State</button></a
+		>
+		<hr />
+		<p>City</p>
+		<a href="{{ url_for('add_or_view_city') }}"
+			><button class="btn btn-success">Add City</button></a
+		>
+		<a href="{{ url_for('add_or_view_city') }}"
+			><button class="btn btn-warning">View City</button></a
+		>
+		<hr />
+		<p>Bank</p>
+		<a href="{{ url_for('add_or_view_bank') }}"
+			><button class="btn btn-success">Add Bank</button></a
+		>
+		<a href="{{ url_for('add_or_view_bank') }}"
+			><button class="btn btn-warning">View Bank</button></a
+		>
+		<hr />
+		<p>Branch</p>
+		<a href="{{ url_for('add_or_view_branch') }}"
+			><button class="btn btn-success">Add Branch</button></a
+		>
+		<a href="{{ url_for('add_or_view_branch') }}"
+			><button class="btn btn-warning">View Branch</button></a
+		>
+		<hr />
+		<p>Users</p>
+		<a href="{{ url_for('show_all_users') }}"
+			><button class="btn btn-warning">View User</button></a
+		>
+		<hr />
+		{% endif %} {% if current_user["user_role"] == "USER" %}
+		<p>Token</p>
+		<a href=" {{ url_for('add_or_view_token') }} "
+			><button class="btn btn-success">Create Token</button></a
+		>
+		<a href=" {{ url_for('add_or_view_token') }} "
+			><button class="btn btn-warning">View Token</button></a
+		>
+		<hr />
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block title %} Users | ADMIN - CBS {% endblock %}
+{% block body %}
+<div class="container px-5 my-5">
+	<table class="table table-striped table-hover table-bordered">
+		<thead class="table-dark">
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">First Name</th>
+				<th scope="col">Middle Name</th>
+				<th scope="col">Last Name</th>
+				<th scope="col">Email</th>
+				<th scope="col">Contact</th>
+			</tr>
+		</thead>
+		{% if users %}
+		<tbody>
+			{% for user in users %}
+			<tr>
+				<td>{{user.user_id}}</td>
+				<td>{{user.user_first_name}}</td>
+				<td>{{user.user_middle_name}}</td>
+				<td>{{user.user_last_name}}</td>
+				<td>{{user.user_email}}</td>
+				<td>{{user.user_contact}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+		{% endif %}
+	</table>
+</div>
+{% endblock %}

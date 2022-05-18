@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block title %} Sign In | CBS {% endblock %} {%
+block body %}
+<div class="container px-5 my-5">
+	<form
+		id="user-login-form"
+		method="post"
+		action="{{ url_for('user_sign_in') }}"
+	>
+		<div class="mb-3">
+			<label class="form-label" for="emailAddress">Email Address</label>
+			<input
+				class="form-control"
+				id="emailAddress"
+				name="email"
+				type="email"
+				placeholder="Enter Email Address"
+				required
+			/>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="password">Password</label>
+			<input
+				class="form-control"
+				id="password"
+				name="password"
+				type="password"
+				placeholder="Enter Password"
+				required
+			/>
+		</div>
+		<div class="d-grid">
+			<button class="btn btn-success" id="submitButton" type="submit">
+				Sign In
+			</button>
+		</div>
+		<p>Not a member? <a href="{{ url_for('user_sign_up') }}">Sign Up</a></p>
+	</form>
+</div>
+{% endblock %}

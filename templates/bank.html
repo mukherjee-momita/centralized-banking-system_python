@@ -1,0 +1,157 @@
+{% extends "base.html" %} {% block title %} Banks | ADMIN - CBS {% endblock %}
+{% block body %}
+<div class="container px-5 my-5">
+	<form
+		id="add-bank-form"
+		method="post"
+		action="{{ url_for('add_or_view_bank') }}"
+	>
+		<div class="mb-3">
+			<label class="form-label" for="bankName">Bank Name</label>
+			<input
+				class="form-control"
+				id="bankName"
+				name="bank-name"
+				type="text"
+				placeholder="Enter Bank Name"
+				required
+			/>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="bankEmail">Bank Email Address</label>
+			<input
+				class="form-control"
+				id="bankEmail"
+				name="bank-email"
+				type="email"
+				placeholder="Enter Bank Email Address"
+				required
+			/>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="buildingNo"
+				>Bank Address Building Number</label
+			>
+			<input
+				class="form-control"
+				id="buildingNo"
+				name="building-no"
+				type="text"
+				placeholder="Enter Bank Address Building Number"
+				required
+			/>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="line">Bank Address Line</label>
+			<input
+				class="form-control"
+				id="line"
+				name="line"
+				type="text"
+				placeholder="Enter Bank Address Line"
+				required
+			/>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="zipCode"
+				>Bank Address Zip-Code</label
+			>
+			<input
+				class="form-control"
+				id="zipCode"
+				name="zip-code"
+				type="text"
+				placeholder="Enter Bank Address Zip Code"
+				required
+			/>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="landmark"
+				>Bank Address Landmark</label
+			>
+			<input
+				class="form-control"
+				id="landmark"
+				name="landmark"
+				type="text"
+				placeholder="Enter Bank Address Landmark"
+				required
+			/>
+		</div>
+		<div class="d-grid">
+			<label class="form-label" for="countryName"
+				>Bank Address Country Name</label
+			>
+			<select
+				class="btn btn-warning btn-lg"
+				name="country-name"
+				id="countryName"
+			>
+				{% for country in countries %}
+				<option value="{{country.country_id}}">
+					{{country.country_name}}
+				</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="d-grid">
+			<label class="form-label" for="stateName"
+				>Bank Address State Name</label
+			>
+			<select
+				class="btn btn-warning btn-lg"
+				name="state-name"
+				id="stateName"
+			>
+				{% for state in states %}
+				<option value="{{state.state_id}}">{{state.state_name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="d-grid">
+			<label class="form-label" for="cityName"
+				>Bank Address City Name</label
+			>
+			<select
+				class="btn btn-warning btn-lg"
+				name="city-name"
+				id="cityName"
+			>
+				{% for city in cities %}
+				<option value="{{city.city_id}}">{{city.city_name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<p></p>
+		<div class="d-grid">
+			<button class="btn btn-success" id="submitButton" type="submit">
+				Add Bank
+			</button>
+		</div>
+	</form>
+</div>
+<div class="container px-5 my-5">
+	<table class="table table-striped table-hover table-bordered">
+		<thead class="table-dark">
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Bank Name</th>
+				<th scope="col">Bank Email</th>
+				<th scope="col">Bank Address</th>
+			</tr>
+		</thead>
+		{% if banks %}
+		<tbody>
+			{% for bank in banks %}
+			<tr>
+				<td>{{bank["bank_id"]}}</td>
+				<td>{{bank["bank_name"]}}</td>
+				<td>{{bank["bank_email"]}}</td>
+				<td>{{bank["bank_address"]}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+		{% endif %}
+	</table>
+</div>
+{% endblock %}

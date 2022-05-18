@@ -1,0 +1,85 @@
+{% extends "base.html" %} {% block title %} Sign Up | CBS {% endblock %} {%
+block body %}
+<div class="container px-5 my-5">
+	<form
+		id="user-registration-form"
+		method="post"
+		action="{{ url_for('user_sign_up') }}"
+	>
+		<div class="mb-3">
+			<label class="form-label" for="firstName">First Name</label>
+			<input
+				class="form-control"
+				id="firstName"
+				name="first-name"
+				type="text"
+				placeholder="Enter First Name"
+				required
+			/>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="middleName">Middle Name</label>
+			<input
+				class="form-control"
+				id="middleName"
+				name="middle-name"
+				type="text"
+				placeholder="Enter Middle Name"
+			/>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="lastName">Last Name</label>
+			<input
+				class="form-control"
+				id="lastName"
+				name="last-name"
+				type="text"
+				placeholder="Enter Last Name"
+				required
+			/>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="emailAddress">Email Address</label>
+			<input
+				class="form-control"
+				id="emailAddress"
+				name="email"
+				type="email"
+				placeholder="Enter Email Address"
+				required
+			/>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="contactNumber">Contact Number</label>
+			<input
+				class="form-control"
+				id="contactNumber"
+				name="contact"
+				type="number"
+				placeholder="Enter Contact Number"
+				required
+			/>
+		</div>
+		<div class="mb-3">
+			<label class="form-label" for="password">Password</label>
+			<input
+				class="form-control"
+				id="password"
+				name="password"
+				type="password"
+				placeholder="Enter Password"
+				required
+			/>
+		</div>
+		<div class="d-grid">
+			<button class="btn btn-success" id="submitButton" type="submit">
+				Sign Up
+			</button>
+		</div>
+		<p>
+			Already Registered?
+			<a href="{{ url_for('user_sign_in') }}">Sign In</a>
+		</p>
+	</form>
+</div>
+{% endblock %}
